@@ -1,16 +1,25 @@
 # PS4 & PS5 PKG Sender 📦🚀
+https://www.mediafire.com/file/53cby5ile6ahiqy/ps4-ps5-pkg-sender-0.9.2beta.apk/file
 
-https://www.mediafire.com/file/cpbb0rcbj70pms3/ps4-ps5-pkg-sender-0.9.1beta.apk/file
+
 
 A modern, feature-rich Android application designed to seamlessly transfer and install `.pkg` files on PlayStation 4 and PlayStation 5 consoles over your local Wi-Fi network.
 
-Developed with **Jetpack Compose (Material Design 3)**, the app features full support for **GoldHEN FTP Direct Streaming**, **Remote Package Installer (RPI)**, an integrated **Homebrew Store**, an internal **Archive Extractor**, **Automated PKG Categorization**, **Horizontal Marquee Filename Scrolling**, and **6 localized languages with preference persistence**.
+Developed with **Jetpack Compose (Material Design 3)**, the app features full support for **GoldHEN FTP Direct Streaming**, **Remote Package Installer (RPI)**, **Multi-PKG Selection & Queueing**, an integrated **Homebrew Store**, an internal **Archive Extractor**, **Automated PKG Categorization**, **Horizontal Marquee Filename Scrolling**, and **6 localized languages with preference persistence**.
 
 ---
 
 ## 🌟 Key Features
 
-### 🔄 1. Dual Transfer Modes
+### 📦 1. Multi-PKG Selection & Sequential Queueing
+* **Multi-File Selection:** Select one or multiple `.pkg` files at once in the File Explorer using checkboxes.
+* **Queue Management Dialog:** Tap on selected packages to inspect the queue, remove individual files, or clear selection.
+* **Sequential GoldHEN FTP Upload:** Automatically transfers queued PKG files sequentially with queue status indicators (`[1/X]`, `[2/X]`, etc.).
+* **Multi-Package RPI Streaming:** Sends array payloads to the PS4 Remote Package Installer service to queue multiple packages on the console at once.
+
+---
+
+### 🔄 2. Dual Transfer Modes
 * **Mode 1: GoldHEN (FTP Upload)**
   * Direct FTP upload to the console's internal storage (`hdd:/data/pkg/`).
   * Custom FTP port configuration (e.g., port `2121`).
@@ -25,7 +34,7 @@ Developed with **Jetpack Compose (Material Design 3)**, the app features full su
 
 ---
 
-### 🏷️ 2. Smart PKG Categorization (Base Game, Update, DLC)
+### 🏷️ 3. Smart PKG Categorization (Base Game, Update, DLC)
 * Automatically detects and labels `.pkg` files in the File Explorer:
   * 🎮 **Base Game** (Blue tag)
   * 🔄 **Update / Patch** (Orange tag)
@@ -34,14 +43,14 @@ Developed with **Jetpack Compose (Material Design 3)**, the app features full su
 
 ---
 
-### 📜 3. Marquee Filename Scrolling & Speed / ETA Display
+### 📜 4. Marquee Filename Scrolling & Speed / ETA Display
 * **Horizontal Marquee Text:** Long filenames automatically scroll horizontally across the screen so you can easily read full file names without truncation.
 * Displays exact transfer progress (`0%` - `100%`), live transfer speed (`MB/s`), and calculated **Remaining Time (ETA)** in `00m 00s` format.
 * Real-time ETA and speed updates in both the app UI and Android status bar notifications.
 
 ---
 
-### 📂 4. Built-in File Explorer & Archive Extractor
+### 📂 5. Built-in File Explorer & Archive Extractor
 * Native internal file browser for phone storage, Downloads, and Documents.
 * **Supported Archive Formats:** Extract `.zip`, `.rar`, `.7z`, `.tar`, `.gz`, `.tgz`, and `.tar.gz` archives directly on your phone.
 * **Batch Extraction:** Extract multiple archives or multi-part archive files in a single pass.
@@ -50,7 +59,7 @@ Developed with **Jetpack Compose (Material Design 3)**, the app features full su
 
 ---
 
-### 🏪 5. Integrated Homebrew Store (PKG Zone)
+### 🏪 6. Integrated Homebrew Store (PKG Zone)
 * Browse hundreds of PS4 Homebrew apps directly inside the app powered by the PKG Zone API.
 * Search and filter by category, developer name, and application title.
 * **Option A:** Download PKGs directly to your phone storage.
@@ -58,19 +67,20 @@ Developed with **Jetpack Compose (Material Design 3)**, the app features full su
 
 ---
 
-### ⚙️ 6. Foreground Service & Panel Notifications
+### ⚙️ 7. Foreground Service & Panel Notifications
 * **Android Foreground Service:** Uses **WakeLock** and **WifiLock** to keep multi-gigabyte transfers running reliably even when the screen is locked or the app is minimized.
 * **Localized Panel Notifications:** Live status bar notifications showing mode (`GoldHEN FTP` / `Package Sender`), filename, transfer percentage, speed, and remaining time.
 
 ---
 
-### 🌐 7. Multi-Language Support & Persistence
+### 🌐 8. Multi-Language Support & Permanent Flag Button
 * 🇩🇪 **German (Deutsch)**
 * 🇬🇧 **English**
 * 🇪🇸 **Spanish (Español)**
 * 🇵🇹 **Portuguese (Português)**
 * 🇷🇺 **Russian (Русский)**
 * 🇸🇦 **Arabic (العربية)**
+* **Permanent Flag Button:** Permanent glass chip button displaying the active flag (`🇩🇪 ▼`) that never disappears or overflows, allowing language changes at any time.
 * **Language Preference Persistence:** Saves your selected language and automatically restores it when restarting the app.
 * **Live Log Translation:** Dynamically translates console log entries and error messages into your selected language when switching flags.
 
@@ -99,16 +109,16 @@ Developed with **Jetpack Compose (Material Design 3)**, the app features full su
 1. Connect your phone and console to the same Wi-Fi network.
 2. Select **GoldHEN** mode at the top of the app.
 3. Enter your console's IP address and FTP port (e.g., `2121`).
-4. Tap **File Explorer / Extractor** and select a `.pkg` file (or extract a ZIP/RAR/7Z archive).
-5. Tap **Send**. The file will be uploaded directly to `hdd:/data/pkg/` on the console.
-6. On your PS4/PS5, install the uploaded PKG using the GoldHEN Package Installer menu.
+4. Tap **File Explorer / Extractor** and select one or multiple `.pkg` files (or extract a ZIP/RAR/7Z archive).
+5. Tap **Send All PKGs**. Files will be uploaded sequentially to `hdd:/data/pkg/` on the console.
+6. On your PS4/PS5, install the uploaded PKGs using the GoldHEN Package Installer menu.
 
 ---
 
 ### Mode 2: Package Sender (HTTP Streaming / RPI)
 1. Launch the **Remote Package Installer** app on your PS4.
 2. Select **Package Sender** mode in the app.
-3. Select a `.pkg` file and tap **Start Server**.
+3. Select `.pkg` files and tap **Start Server**.
 4. Enter your PS4's IP address (RPI port is typically `12800`).
 5. Tap **Start Installation on PS4/PS5**.
 6. The installation trigger will be sent, and live progress/ETA will be displayed in the app and status bar notification.
@@ -139,3 +149,12 @@ Developed with **Jetpack Compose (Material Design 3)**, the app features full su
 * **Archive Extraction:**
   * [Apache Commons Compress](https://commons.apache.org/proper/commons-compress/) (1.28.0)
   * [Junrar](https://github.com/junrar/junrar) (8.1.1)
+  * [XZ for Java](https://tukaani.org/xz/java.html) (1.12)
+
+---
+
+## 👤 Developer & Credits
+
+* **Developer / Creator:** **311Budz**
+* **App Name:** PS4 & PS5 PKG Sender
+* **Version:** 1.0
